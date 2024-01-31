@@ -86,12 +86,12 @@ int main(){
                 //continuously get the ldr sensor values and check to see if the ignition button is being pressed.
                 ignitionCheck();
                 ldrRead = ldrSensorRead();
+                lightCheck(ldrRead);
                 //print the ldr sensor values to the terminal and run the function lightCheck.
                 char ldrStr[100];
                 int ldrStringLength;
                 sprintf(ldrStr, "LDR: %.2f\r\n", ldrRead);
                 uartUsb.write(ldrStr, strlen(ldrStr));
-                lightCheck(ldrRead);
             }
         }
     }
