@@ -1,1 +1,34 @@
-//comments here: see rubric
+Name of team members
+One paragraph description of the system
+
+Ignition Subsystem:
+
+1. Start the engine (i.e., light the blue LED) while the driver’s seat is occupied and when the ignition button is pushed and then released.
+Pass
+
+2. Keep the engine running even if the driver should exit the vehicle.
+Pass
+
+3. When the engine is running, stop the engine when the ignition button is pushed (i.e., before the button is released).
+Pass
+
+
+Headlight Subsystem
+
+4. If the engine is running, and the user selects: ON, turn on both low beam lamps; OFF, turn off all lamps.
+Pass
+
+5a. If the user selects the AUTO position: When the light level is above a “daylight” level, switch the headlights off after a delay of 2 seconds.
+Pass
+
+5b. If the user selects the AUTO position: When the light level is below a “dusk” level, switch headlights on after a delay of 1 second.
+Pass
+
+5c. If the user selects the AUTO position: When between these two levels, the headlights should hold their previous state. 
+Pass
+
+6. Turn off all headlights and the ignition light indicator when the engine is off. 
+Pass
+
+
+
