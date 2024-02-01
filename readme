@@ -1,5 +1,15 @@
-Name of team members
-One paragraph description of the system
+Created by Becky Perkins and Spencer Aldrich
+
+For this project, our system models a car with an automatic headlight system with user inputs to control the headlights and a light sensor to detect whether the headlights 
+should be on or off based on the time of day. For the car's engine to start, the driver needs to be in their seat and press the ignition button at the same time. 
+Once this is achieved, a blue LED and the two headlights will turn on when the ignition button is released, signaling that the engine is on. At this point, the potentiometer will be 
+used for the user to decide if they would like to turn on the automatic headlights. Once the potentiometer has reached above a threshold value, the automatic headlights will begin 
+and the sensor will start reading values that will determine if it is day or night. If the user decides that they don’t want the automatic headlights on anymore, then they will turn 
+the potentiometer back to the original position and the headlights will remain on regardless of the light sensor reading. Once in the auto position, if the light sensor reads values 
+that indicate that it’s daytime, then the headlights will be off after a delay of two seconds. If the sensor reads values that indicate that it’s dusk, then the headlights will turn 
+on after a delay of 2 seconds. If at any point the driver leaves their seat after the ignition is turned on, nothing will change. However, if the ignition button is turned 
+off at any point after it is turned on, then the headlights and the blue LED will turn off and the driver will need to get back into their seat for the ignition to start again.
+
 
 Ignition Subsystem:
 
