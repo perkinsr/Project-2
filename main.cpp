@@ -78,7 +78,9 @@ int main(){
             int pStringLength;
             sprintf (pStr, "Potentiometer: %.2f\r\n", potentiometerReading);
             uartUsb.write(pStr, strlen(pStr));
-            if (potentiometerReading >= ON_MODE){
+            //if the potentiometer readings are above the threshold ON_MODE value, but below the AUTO_MODE readings, then the headlights
+            //will turn on
+            if (potentiometerReading >= ON_MODE && potentiometerReading < AUTO_MODE){
                 headlight1 = ON;
                 headlight2 = ON;
             }
