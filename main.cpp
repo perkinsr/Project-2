@@ -70,23 +70,29 @@ int main(){
         //while the ignition is running, turn on the engineLED.
         while (engineState == 1){
             engineLED = ON;
-            //continuously check to see if the ignition button is pressed again to turn off the ignition.
-            ignitionCheck();
             //read and print out the potentiometer values to the serial terminal.
             potentiometerReading = potentiometerRead();
             char pStr[100];
             int pStringLength;
             sprintf (pStr, "Potentiometer: %.2f\r\n", potentiometerReading);
             uartUsb.write(pStr, strlen(pStr));
-            //if the potentiometer readings are above the threshold ON_MODE value, but below the AUTO_MODE readings, then the headlights
-            //will turn on
+            //if the potentiometer is above on ON_MODE threshold but below the AUTO_MODE threshold, then turn on
+            //the headlights
             if (potentiometerReading >= ON_MODE && potentiometerReading < AUTO_MODE){
                 headlight1 = ON;
                 headlight2 = ON;
-            //if the potentiometer reading is lower than ON_MODE, then the headlights are in OFF mode
+            //the headlights are in off mode if the potentiometer is below ON_MODE.
             } else {
                 headlight1 = OFF;
                 headlight2 = OFF;
+            }
+            //if the ignitionButton is pressed during this stage, turn off the engine light, the headlights, and make
+            //engine state zero so the for loop is exited.
+            if (ignitionButton){
+                headlight1 = OFF;
+                headlight2 = OFF;
+                engineLED = OFF;
+                engineState = 0;
             }
             //if the potentiometer is turned to a value larger than AUTO_MODE, then auto mode is selected.
             while (potentiometerReading >= AUTO_MODE && engineState == 1) {
