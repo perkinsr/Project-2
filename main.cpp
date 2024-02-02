@@ -83,6 +83,10 @@ int main(){
             if (potentiometerReading >= ON_MODE && potentiometerReading < AUTO_MODE){
                 headlight1 = ON;
                 headlight2 = ON;
+            //if the potentiometer reading is lower than ON_MODE, then the headlights are in OFF mode
+            } else {
+                headlight1 = OFF;
+                headlight2 = OFF;
             }
             //if the potentiometer is turned to a value larger than AUTO_MODE, then auto mode is selected.
             while (potentiometerReading >= AUTO_MODE && engineState == 1) {
