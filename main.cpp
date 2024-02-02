@@ -3,6 +3,7 @@
 #include "arm_book_lib.h"
 
 //=====[Declaration of MACROS]===============
+#define ON_MODE          0.3
 #define AUTO_MODE        0.5
 #define DAYLIGHT_MODE    0.75
 #define DUSK_MODE        0.65
@@ -66,11 +67,9 @@ int main(){
                 }
             }
         }
-        //while the ignition is running, turn on the engineLED and set the headlights on.
+        //while the ignition is running, turn on the engineLED.
         while (engineState == 1){
             engineLED = ON;
-            headlight1 = ON;
-            headlight2 = ON;
             //continuously check to see if the ignition button is pressed again to turn off the ignition.
             ignitionCheck();
             //read and print out the potentiometer values to the serial terminal.
@@ -79,8 +78,12 @@ int main(){
             int pStringLength;
             sprintf (pStr, "Potentiometer: %.2f\r\n", potentiometerReading);
             uartUsb.write(pStr, strlen(pStr));
+            if (potentiometerReading >= ON_MODE){
+                headlight1 = ON;
+                headlight2 = ON;
+            }
             //if the potentiometer is turned to a value larger than AUTO_MODE, then auto mode is selected.
-            while (potentiometerReading > AUTO_MODE && engineState == 1) {
+            while (potentiometerReading >= AUTO_MODE && engineState == 1) {
                 //continue reading the potentiometer values in case the user unselects auto mode.
                 potentiometerReading = potentiometerRead();
                 //continuously get the ldr sensor values and check to see if the ignition button is being pressed.
